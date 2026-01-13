@@ -273,6 +273,15 @@ CREATE TABLE `whitelist` (
 	UNIQUE INDEX `identifier` (`identifier`) USING BTREE
 )COLLATE='utf8mb4_general_ci' ENGINE=InnoDB ROW_FORMAT=DYNAMIC AUTO_INCREMENT=1;
 
+CREATE TABLE IF NOT EXISTS `posse` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` varchar(50) NOT NULL DEFAULT '0',
+  `characterid` varchar(50) NOT NULL DEFAULT '0',
+  `possename` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+
+ALTER TABLE `characters` ADD COLUMN `posseid` INT(11) NULL DEFAULT 0;
 
 INSERT IGNORE INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `metadata`, `desc`) VALUES
 ('acid', 'Acid', 10, 1, 'item_standard', 1, '{}', 'A corrosive substance used for various purposes.'),
@@ -1273,3 +1282,161 @@ INSERT IGNORE INTO `items` (`item`, `label`, `limit`, `can_remove`, `type`, `usa
 ('hk_133', 'House Key', 1, 1, 'item_standard', 1, '{}', 'A specialized house key.'),
 ('hk_134', 'House Key', 1, 1, 'item_standard', 1, '{}', 'A specialized house key.');
 
+CREATE TABLE IF NOT EXISTS `bcc_farming` (
+    `plant_id` INT(40) NOT NULL AUTO_INCREMENT,
+    `plant_coords` LONGTEXT NOT NULL,
+    `plant_type` VARCHAR(40) NOT NULL,
+    `plant_watered` CHAR(6) NOT NULL DEFAULT 'false',
+    `time_left` VARCHAR(100) NOT NULL,
+    `plant_time` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    `plant_owner` INT(40) NOT NULL,
+    PRIMARY KEY (`plant_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`)
+VALUES
+    ('wateringcan', 'Water Jug', 10, 1, 'item_standard', 1, 'A bucket of clean water.'),
+    ('wateringcan_empty', 'Empty Watering Jug', 10, 1, 'item_standard', 1, 'An empty water bucket.'),
+    ('wateringcan_dirtywater', 'Dirty Water Jug', 10, 1, 'item_standard', 1, 'A bucket filled with dirty water.'),
+    ('fertilizer1', 'Fertilizer Grade C', 10, 1, 'item_standard', 1, 'Low grade fertilizer.'),
+    ('fertilizer2', 'Fertilizer Grade B', 10, 1, 'item_standard', 1, 'Mid grade fertilizer.'),
+    ('fertilizer3', 'Fertilizer Grade A', 10, 1, 'item_standard', 1, 'High grade fertilizer.'),
+    ('soil', 'Soil', 10, 1, 'item_standard', 1, 'High grade soil.'),
+    ('hoe', 'Garden Hoe', 10, 1, 'item_standard', 1, 'A gardening tool with a thin metal blade.')
+ON DUPLICATE KEY UPDATE
+    `item` = VALUES(`item`),
+    `label` = VALUES(`label`),
+    `limit` = VALUES(`limit`),
+    `can_remove` = VALUES(`can_remove`),
+    `type` = VALUES(`type`),
+    `usable` = VALUES(`usable`),
+    `desc` = VALUES(`desc`);
+
+CREATE TABLE IF NOT EXISTS `brewing` (
+  `id` uuid NOT NULL,
+  `propname` varchar(255) DEFAULT NULL,
+  `x` double DEFAULT NULL,
+  `y` double DEFAULT NULL,
+  `z` double DEFAULT NULL,
+  `h` double DEFAULT NULL,
+  `isbrewing` int(11) DEFAULT NULL,
+  `stage` int(11) DEFAULT NULL,
+  `currentbrew` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`) VALUES ('collector_card', 'Collector Card', 12, 1, 'item_standard', 1)
+    ON DUPLICATE KEY UPDATE `item`='collector_card', `label`='Collector Card', `limit`=12, `can_remove`=1, `type`='item_standard', `usable`=1;
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('collector_card_box', 'Collector Card', 10, 1, 'item_standard', 1, 'A box to store cards of specific set.')
+    ON DUPLICATE KEY UPDATE `item`='collector_card_box', `label`='Card Box', `limit`=10, `can_remove`=1, `type`='item_standard', `usable`=1, `desc` = 'A box to store cards of specific set.';
+
+CREATE TABLE IF NOT EXISTS `jail` (
+  `identifier` varchar(100) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL DEFAULT '0',
+  `characterid` varchar(5) NOT NULL DEFAULT '0',
+  `time` varchar(100) NOT NULL DEFAULT '0',
+  `time_s` varchar(100) NOT NULL DEFAULT '0',
+	`jaillocation` varchar(100) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `communityservice` (
+  `identifier` varchar(100) NOT NULL DEFAULT '0',
+  `name` varchar(100) NOT NULL DEFAULT '0',
+  `characterid` varchar(5) NOT NULL DEFAULT '0',
+  `communityservice` varchar(100) NOT NULL DEFAULT '0',
+  `servicecount` varchar(100) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+CREATE TABLE IF NOT EXISTS `society_ledger` (
+  `job` longtext DEFAULT NULL,
+  `ledger` int(11) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `society_ledger` (`job`, `ledger`) VALUES
+	('police', 0);
+
+CREATE TABLE IF NOT EXISTS `player_horses` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `identifier` VARCHAR(50) NOT NULL,
+  `charid` INT(11) NOT NULL,
+  `selected` INT(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(100) NOT NULL,
+  `model` VARCHAR(100) NOT NULL,
+  `components` VARCHAR(5000) NOT NULL DEFAULT '{}',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `gender` ENUM('male', 'female') DEFAULT 'male';
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `xp` INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `captured` INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `born` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `health` INT(11) NOT NULL DEFAULT 50;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `stamina` INT(11) NOT NULL DEFAULT 50;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `dead` INT(11) NOT NULL DEFAULT 0;
+ALTER TABLE `player_horses` ADD COLUMN IF NOT EXISTS `writhe` INT(11) NOT NULL DEFAULT 0 AFTER `stamina`;
+
+CREATE INDEX IF NOT EXISTS `idx_charid` ON `player_horses` (`charid`);
+CREATE INDEX IF NOT EXISTS `idx_identifier` ON `player_horses` (`identifier`);
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`)
+VALUES
+  ('oil_lantern', 'Oil Lantern', 1, 1, 'item_standard', 1, 'A portable light source.'),
+  ('consumable_horse_reviver', 'Horse Reviver', 3, 1, 'item_standard', 1, 'Curative compound for injured horse.'),
+  ('consumable_haycube', 'Haycube', 10, 1, 'item_standard', 1, 'A compact cube of hay.'),
+  ('horsebrush', 'Horse Brush', 5, 1, 'item_standard', 1, 'A brush used for grooming horses.'),
+  ('consumable_apple', 'Apple', 10, 1, 'item_standard', 1, 'A juicy and delicious fruit.'),
+  ('consumable_carrots', 'Carrots', 10, 1, 'item_standard', 1, 'An orange root vegetable commonly used in cooking.'),
+  ('diamond', 'Diamond', 20, 1, 'item_standard', 1, 'A precious gemstone known for its brilliance and value.')
+ON DUPLICATE KEY UPDATE
+  `label`=VALUES(`label`),
+  `limit`=VALUES(`limit`),
+  `can_remove`=VALUES(`can_remove`),
+  `type`=VALUES(`type`),
+  `usable`=VALUES(`usable`),
+  `desc`=VALUES(`desc`);
+
+CREATE TABLE IF NOT EXISTS `player_wagons` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `identifier` VARCHAR(50) NOT NULL,
+  `charid` INT(11) NOT NULL,
+  `selected` int(11) NOT NULL DEFAULT 0,
+  `name` VARCHAR(100) NOT NULL,
+  `model` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `player_wagons` ADD COLUMN IF NOT EXISTS (`condition` INT(11) NOT NULL DEFAULT 100);
+
+INSERT INTO
+    `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`)
+VALUES
+    ('bcc_repair_hammer', 'Repair Hammer', 1, 1, 'item_standard', 1, 'Tool used for repairs.')
+ON DUPLICATE KEY UPDATE
+    `item` = VALUES(`item`),
+    `label` = VALUES(`label`),
+    `limit` = VALUES(`limit`),
+    `can_remove` = VALUES(`can_remove`),
+    `type` = VALUES(`type`),
+    `usable` = VALUES(`usable`),
+    `desc` = VALUES(`desc`);
+
+ALTER TABLE `characters` ADD COLUMN IF NOT EXISTS (`bleed` INT(11) NOT NULL DEFAULT 0);
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('Bandage', 'Bandage', 10, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='Bandage', `label`='Bandage', `limit`=10, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('Rags', 'Rags', 10, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='Rags', `label`='Rags', `limit`=10, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('DocMorphine', 'Morphine', 5, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='DocMorphine', `label`='Morphine', `limit`=5, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('SmellingSalts', 'Smelling Salts', 5, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='SmellingSalts', `label`='Smelling Salts', `limit`=5, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('NeedleandThread', 'Needle and Thread', 5, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='NeedleandThread', `label`='Needle and Thread', `limit`=5, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';
+
+INSERT INTO `items`(`item`, `label`, `limit`, `can_remove`, `type`, `usable`, `desc`) VALUES ('Doctor_Bag', 'Doctor Bag', 1, 1, 'item_standard', 1, '')
+ON DUPLICATE KEY UPDATE `item`='Doctor_Bag', `label`='Doctor Bag', `limit`=1, `can_remove`=1, `type`='item_standard', `usable`=1, `desc`='';

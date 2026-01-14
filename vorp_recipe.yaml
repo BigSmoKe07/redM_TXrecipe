@@ -388,7 +388,7 @@ tasks:
 # Download bcc-jobmenu
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-jobmenu
-    ref: main
+    ref: master
     dest: ./temp/[bcc]/bcc-jobmenu
 
 # Download bcc-goldpanning

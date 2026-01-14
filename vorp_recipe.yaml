@@ -541,13 +541,11 @@ tasks:
   - action: waste_time
     seconds: 10
 
-# Download bcc-corehud release version
+# Download bcc-corehud
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-corehud/releases/download/latest/bcc-corehud.zip
-    dest: ./tmp/files/bcc-corehud.zip
-  - action: unzip
+    src: https://github.com/BryceCanyonCounty/bcc-corehud
+    ref: main
     dest: ./temp/[bcc]/bcc-corehud
-    src: ./tmp/files/bcc-corehud.zip
 
 # Download bcc-customblips
   - action: download_github

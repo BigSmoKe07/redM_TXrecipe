@@ -352,32 +352,24 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-water
     ref: main
     dest: ./temp/[bcc]/bcc-water
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-camp
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-camp
     ref: main
     dest: ./temp/[bcc]/bcc-camp
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-scene
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-scene
     ref: main
     dest: ./temp/[bcc]/bcc-scene
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-train
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-train
     ref: main
     dest: ./temp/[bcc]/bcc-train
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-ranch
   - action: download_github
@@ -392,32 +384,24 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-sellNPC
     ref: main
     dest: ./temp/[bcc]/bcc-sellNPC
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-jobmenu
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-jobmenu
     ref: main
     dest: ./temp/[bcc]/bcc-jobmenu
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-goldpanning
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-goldpanning
     ref: main
     dest: ./temp/[bcc]/bcc-goldpanning
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-oil
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-oil
     ref: main
     dest: ./temp/[bcc]/bcc-oil
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-reports
   - action: download_github
@@ -432,72 +416,54 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-documents
     ref: main
     dest: ./temp/[bcc]/bcc-documents
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-portals
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-portals
     ref: main
     dest: ./temp/[bcc]/bcc-portals
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-pets
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-pets
     ref: main
     dest: ./temp/[bcc]/bcc-pets
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-medical
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-medical
     ref: main
     dest: ./temp/[bcc]/bcc-medical
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-wagons
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-wagons
     ref: main
     dest: ./temp/[bcc]/bcc-wagons
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-userlog
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-userlog
     ref: main
     dest: ./temp/[bcc]/bcc-userlog
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-robbery
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-robbery
     ref: main
     dest: ./temp/[bcc]/bcc-robbery
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-bin
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-bin
     ref: main
     dest: ./temp/[bcc]/bcc-bin
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-law
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-law
     ref: main
     dest: ./temp/[bcc]/bcc-law
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-society
   - action: download_github
@@ -512,80 +478,60 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-guarma
     ref: main
     dest: ./temp/[bcc]/bcc-guarma
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-craft
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-craft
     ref: main
     dest: ./temp/[bcc]/bcc-craft
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-map
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-map
     ref: main
     dest: ./temp/[bcc]/bcc-map
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-waves
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-waves
     ref: main
     dest: ./temp/[bcc]/bcc-waves
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-nazar
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-nazar
     ref: main
     dest: ./temp/[bcc]/bcc-nazar
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-saloons
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-saloons
     ref: main
     dest: ./temp/[bcc]/bcc-saloons
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-farming
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-farming
     ref: main
     dest: ./temp/[bcc]/bcc-farming
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-acidtrip
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-acidtrip
     ref: main
     dest: ./temp/[bcc]/bcc-acidtrip
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-anticheat
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-anticheat
     ref: main
     dest: ./temp/[bcc]/bcc-anticheat
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-blindfold
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-blindfold
     ref: main
     dest: ./temp/[bcc]/bcc-blindfold
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-boats
   - action: download_github
@@ -608,48 +554,36 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-customblips
     ref: main
     dest: ./temp/[bcc]/bcc-customblips
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-doorlocks
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-doorlocks
     ref: main
     dest: ./temp/[bcc]/bcc-doorlocks
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-holidays
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-holidays
     ref: main
     dest: ./temp/[bcc]/bcc-holidays
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-job-alerts
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-job-alerts
     ref: main
     dest: ./temp/[bcc]/bcc-job-alerts
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-legendaries
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-legendaries
     ref: main
     dest: ./temp/[bcc]/bcc-legendaries
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-mailbox
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-mailbox
     ref: main
     dest: ./temp/[bcc]/bcc-mailbox
-  - action: waste_time
-    seconds: 10
 
 
 # Download bcc-playerblips
@@ -657,16 +591,12 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-playerblips
     ref: main
     dest: ./temp/[bcc]/bcc-playerblips
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-popdensity
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-popdensity
     ref: main
     dest: ./temp/[bcc]/bcc-popdensity
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-posse
   - action: download_github
@@ -681,32 +611,24 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-shops
     ref: main
     dest: ./temp/[bcc]/bcc-shops
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-utils
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-utils
     ref: main
     dest: ./temp/[bcc]/bcc-utils
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-vehiclefixes
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-vehiclefixes
     ref: main
     dest: ./temp/[bcc]/bcc-vehiclefixes
-  - action: waste_time
-    seconds: 10
 
 # Download bcc-zonenotify
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-zonenotify
     ref: main
     dest: ./temp/[bcc]/bcc-zonenotify
-  - action: waste_time
-    seconds: 10
 
 # Move all bcc resources to root for txadmin
   - action: move_path
